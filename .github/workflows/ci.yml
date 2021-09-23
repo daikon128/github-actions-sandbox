@@ -23,8 +23,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Build
+        run: npm run build
+
       - name: Start App
-        run: npm run serve &
+        run: npm run start &
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
