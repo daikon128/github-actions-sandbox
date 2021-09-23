@@ -1,9 +1,8 @@
 {
-  "pluginsFile": "tests/plugins/index.js",
-  "supportFile": "tests/support/index.js",
-  "fixturesFolder": "tests/fixtures",
-  "integrationFolder": "tests/e2e",
-  "testFiles": "**/*.spec.js*",
-  "experimentalComponentTesting": true,
-  "componentFolder": "tests/components"
+  "integrationFolder": "./",
+  "baseUrl": "http://localhost:8899",
+  "$schema": "https://raw.githubusercontent.com/cypress-io/cypress/develop/cli/schema/cypress.schema.json",
+  "pluginsFile": "./tests/cypress/plugins/index.js",
+  "componentFolder": "./tests/unit/components",
+  "testFiles": "**/*.spec.js"
 }
