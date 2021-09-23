@@ -7,11 +7,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Start App
-        run: |
-          npm install
-          npm run serve
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm キャッシュファイルは Linux/macOS の `~/.npm` に保存される
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
+			- name: Install dependencies
+        run: npm install
+
+
+      - name: Start App
+        run: npm run serve
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
